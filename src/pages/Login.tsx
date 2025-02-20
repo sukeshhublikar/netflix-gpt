@@ -102,15 +102,15 @@ export default function Login() {
               className="pt-3 pb-3 px-4 border border-[#5F5F5F] bg-transparent focus:outline-none rounded"
             />
 
-            <div className="relative">
+            <div className="relative items-center justify-center flex">
               <input
                 ref={passwordRef}
                 type={showPassword ? "text" : "password"}
                 placeholder="Password"
-                className="w-full pt-3 pb-3 px-4 border border-[#5F5F5F] bg-transparent focus:outline-none rounded"
+                className="w-full pt-3 pb-3 pl-4 pr-8 border border-[#5F5F5F] bg-transparent focus:outline-none rounded"
               />
               <button
-                className="absolute left-0 right-o "
+                className="absolute right-2 "
                 onClick={() => setShowPassword(!showPassword)}
               >
                 {showPassword ? <EyeOffIcon /> : <EyeOnIcon />}

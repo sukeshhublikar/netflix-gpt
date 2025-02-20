@@ -4,7 +4,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { ErrorCode, ErrorMessage } from "./constant";
+import { API_OPTIONS, ErrorCode, ErrorMessage } from "./constant";
 
 export function createUser({
   name,
@@ -62,7 +62,7 @@ export function loginUser({
     signInWithEmailAndPassword(auth, email, password)
       .then(async (userCredential) => {
         // Signed in
-      //  const user = userCredential.user;
+        //  const user = userCredential.user;
         // ...
         resolve({});
       })
@@ -73,4 +73,18 @@ export function loginUser({
         }
       });
   });
+}
+
+export async function nowPlayingMovies() {
+  try {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/movie/now_playing?page=1`,
+      API_OPTIONS
+    );
+    const data = await response.json();
+    return data?.results;
+  } catch (e) {
+    console.log(e);
+    throw Error("Error while fetching data");
+  }
 }
