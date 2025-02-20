@@ -1,5 +1,5 @@
 export const ErrorMessage = {
-"INVALID_CREDENTIAL":"Invlaid credential"
+"INVALID_CREDENTIAL":"Invalid credential"
 }
 
 export const ErrorCode = {

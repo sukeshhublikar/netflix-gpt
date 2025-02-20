@@ -48,3 +48,26 @@ export default tseslint.config({
   },
 })
 ```
+// Pending 
+   Error Boundary 
+   Toast Messages 
+
+
+
+// Firebase login 
+sh
+  ```npm install -g firebase-tool ```
+sh
+  ```firebase login```
+ Enter passsword or genrate tempory session 
+
+#
+sh ```firebase init ```
+
+sh ```firebase deploy ```
+
+
+
+// Userone
+sh ```{"returnSecureToken":true,"email":"user1@test.com","password":"User1@test"}```
+

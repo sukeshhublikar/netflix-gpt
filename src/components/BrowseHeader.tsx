@@ -9,26 +9,27 @@ import { auth } from "@/utils/firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { addUser, removeUser } from "@/store/userSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { NETFLIX_LOGO, USER_AVATAR } from "@/lib/constant";
 
 export default function BrosweHeader() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+const user = useSelector((state:any)=>state.user)
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/auth.user
-        const uid = user.uid;
+       // const uid = user.uid;
         dispatch(addUser(user));
         navigate("/browse");
         // ...
       } else {
         dispatch(removeUser());
         navigate("/");
+        
       }
     });
     return () => unsubscribe();
@@ -45,9 +46,9 @@ export default function BrosweHeader() {
         // An error happened.
       });
   };
-
+console.log(user)
   return (
-    <div className="flex px-8  bg-black w-full items-center ">
+    <div className="flex px-8  w-full items-center browser-header" >
       <div className="w-40 left-10 ">
         <Img src={NETFLIX_LOGO} />
       </div>

@@ -6,6 +6,7 @@ import { createUser, loginUser } from "../services/api";
 import { useNavigate } from "react-router-dom";
 import { addUser } from "@/store/userSlice";
 import { useDispatch } from "react-redux";
+import { EyeOffIcon, EyeOnIcon } from "@/common/Icons";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -14,6 +15,7 @@ export default function Login() {
   const passwordRef = useRef<HTMLInputElement>(null);
   const nameRef = useRef<HTMLInputElement>(null);
   const [isLogin, setLogin] = useState(true);
+  const [showPassword, setShowPassword] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const toggleLoginStatus = (e: React.MouseEvent<HTMLElement>) => {
@@ -81,7 +83,7 @@ export default function Login() {
       <div className="bg-[#000000b3] left-0 right-0 w-[30%] m-auto top-0 bottom-0 h-[580px] absolute py-12 px-16 text-white rounded">
         <form onSubmit={(e) => e.preventDefault()}>
           <div className="pb-4 font-bold mb-7 text-3xl ">
-            {isLogin ? "Sign In" : "Sign Up"} {JSON.stringify(isLogin)}
+            {isLogin ? "Sign In" : "Sign Up"}
           </div>
           <div className="flex flex-col gap-5">
             {!isLogin ? (
@@ -92,18 +94,28 @@ export default function Login() {
                 className="pt-3 pb-3 px-4 border border-[#5F5F5F] bg-transparent focus:outline-none rounded"
               />
             ) : null}
+
             <input
               ref={emailRef}
               type="text"
               placeholder="Email or mobile number"
               className="pt-3 pb-3 px-4 border border-[#5F5F5F] bg-transparent focus:outline-none rounded"
             />
-            <input
-              ref={passwordRef}
-              type="password"
-              placeholder="Password"
-              className="pt-3 pb-3 px-4 border border-[#5F5F5F] bg-transparent focus:outline-none rounded"
-            />
+
+            <div className="relative">
+              <input
+                ref={passwordRef}
+                type={showPassword ? "text" : "password"}
+                placeholder="Password"
+                className="w-full pt-3 pb-3 px-4 border border-[#5F5F5F] bg-transparent focus:outline-none rounded"
+              />
+              <button
+                className="absolute left-0 right-o "
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <EyeOffIcon /> : <EyeOnIcon />}
+              </button>
+            </div>
           </div>
           <div className="text-red-500 text-sm mt-2">{errorMsg}</div>
           <div className="flex flex-col items-center gap-4 mt-4">
