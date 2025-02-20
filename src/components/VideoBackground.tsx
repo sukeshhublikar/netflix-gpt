@@ -10,7 +10,7 @@ export default function VideoBackground({ movieId }: { movieId: number }) {
     loader: boolean;
     error: string | null;
   } = useFetch(
-    "https://api.themoviedb.org/3/movie/939243/videos?language=en-US"
+    `https://api.themoviedb.org/3/movie/${movieId}/videos`
   );
   const video = useMemo(() => {
     if (data && !loader) {
@@ -22,12 +22,15 @@ export default function VideoBackground({ movieId }: { movieId: number }) {
     }
     return null;
   }, [data, loader]);
-  console.log(video);
+
+  if (video === null) {
+    return <div className="w-screen aspect-video"></div>;
+  }
   return (
     <div>
       <iframe
         className="w-screen aspect-video"
-        src="https://www.youtube.com/embed/MbohuBUxcRU?autoplay=1&mute=1&loop=1&showinfo=0&controls=0"
+        src={`https://www.youtube.com/embed/${video?.key}?autoplay=1&mute=1&loop=1&showinfo=0&controls=0`}
         title="YouTube video player"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerPolicy="strict-origin-when-cross-origin"
