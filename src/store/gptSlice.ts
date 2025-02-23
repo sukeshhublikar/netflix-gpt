@@ -42,7 +42,7 @@ const gptSlice = createSlice({
     });
     builder.addCase(fetchGPTSuggestedMovies.fulfilled, (state, action) => {
       state.searchLoader = false;
-      state.movieResults = action.payload as Array<Array<Movie>>;
+      state.movieResults = action.payload as unknown as Array<Array<Movie>>;
     });
     builder.addCase(fetchGPTSuggestedMovies.rejected, (state, action) => {
       state.searchLoader = false;

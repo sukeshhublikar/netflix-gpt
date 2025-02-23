@@ -11,6 +11,7 @@ import { resetGPT } from "@/store/gptSlice";
 export default function GPTMovieSuggestion() {
   const { formatMessage: f } = useFormatter();
   const dispatch: AppDispatch = useDispatch();
+  // @ts-ignore
   const {
     searchError = "",
     movieResults = [],
