@@ -1,65 +1,65 @@
-# React + TypeScript + Vite
+# Netflix GPT
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a Netflix-like application built with React, TypeScript, and Vite. It integrates with Firebase for authentication and uses OpenAI's GPT for movie recommendations.
 
-Currently, two official plugins are available:
+## Live Link
+[Netflix GPT](https://netflix-gpt-b6669.web.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- User authentication with Firebase
+- Movie browsing and search
+- GPT-powered movie recommendations
+- Responsive design with Tailwind CSS
 
-- Configure the top-level `parserOptions` property like this:
+## Getting Started
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
-```
+### Prerequisites
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- Node.js (v14 or higher)
+- pnpm
 
-```js
-// eslint.config.js
-import react from "eslint-plugin-react";
+### Installation
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: "18.3" } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs["jsx-runtime"].rules,
-  },
-});
-```
+1. Clone the repository:
 
-// Pending
-Error Boundary
-LOader initial and card
-Toast Messages
-Browser history if quey params will lose values
- Animation on Search button click
-translation component
+   ```sh
+   git clone https://github.com/your-username/netflix-gpt.git
+   cd netflix-gpt
+   ```
+2. Install dependencies
+   ``` sh
+    pnpm install
+   ```
+3.  Set up Firebase:
+   Install Firebase CLI:
 
+   ```sh
+   pnpm install -g firebase-tools
+   ```
+   Log in to Firebase:
+   ```sh
+   firebase login
+   ```
+  Initialize Firebase:    
+   ```sh
+   firebase init
+   ```
+  Deploy to Firebase
+    ```sh
+   firebase deploy
+   ```
+4. Create a .env file in the root directory and add your API keys:
+   ```sh
+    VITE_API_KEY=your_api_key
+    VITE_OPENAI_KEY=your_openai_key 
+   ``` 
+
+  
 // Firebase login
 sh
-`npm install -g firebase-tool `
+`pnpm install -g firebase-tool `
 sh
 `firebase login`
 Enter passsword or genrate tempory session
