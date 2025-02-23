@@ -1,5 +1,6 @@
 import { nowPlayingMovies } from "@/services/api";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import _ from "lodash";
 
 export interface Movie {
   id: number;
@@ -8,6 +9,8 @@ export interface Movie {
   poster_path: string;
   backdrop_path: string;
   overview: string;
+  type: string;
+  key: string;
 }
 
 export interface moviesState {

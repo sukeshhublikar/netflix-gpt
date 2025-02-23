@@ -7,9 +7,12 @@ export default function SecondaryContainer() {
   const { nowPlayingMovies, nowPlayingMoviesLoading } = useSelector(
     (state: RootState) => state.movies
   );
+  if (nowPlayingMovies?.length === 0) {
+    return null;
+  }
   return (
     <div className="w-full bg-black pl-8 pr-1">
-      <div className="-mt-[12%] z-50 relative bg-transparent">
+      <div className="-mt-[12%] max-sm:mt-0 sm:-mt-[5%] z-50 relative bg-transparent">
         <MovieList
           title={"Now Playing"}
           movies={nowPlayingMovies || []}

@@ -13,11 +13,11 @@ export default function MovieList({
   if (loading) {
     return (
       <div className="flex flex-row w-full white gap-4 -ml-5">
-        {[1, 2, 3, 4].map((idx) => {
+        {[1, 2, 3, 4, 5].map((idx) => {
           return (
             <div
               key={idx}
-              className="flex items-center justify-center h-40 mb-4 bg-gray-500 rounded-sm w-[24%] animate-pulse"
+              className="flex items-center justify-center h-40 mb-4 bg-gray-500 rounded-sm lg:min-w-[20%] min-w-[24%] max-sm:min-w-[50%] animate-pulse"
             >
               <svg
                 className="w-10 h-10 text-gray-200 dark:text-gray-600"
@@ -39,13 +39,14 @@ export default function MovieList({
   return (
     <div className="px-1 mb-4">
       <h1 className="text-2xl text-white py-2.5"> {title}</h1>
-      <div className="flex flex-row gap-2 overflow-x-scroll w-[calc(100%-1rem)]">
+      <div className="flex flex-row gap-2 overflow-x-scroll w-[calc(100%-1rem)] pb-1.5">
         {movies?.map((movie) => {
           return (
             <MovieCard
               key={movie.id}
               title={movie.title}
               img={movie.poster_path}
+              backdropImg={movie.backdrop_path}
             />
           );
         })}

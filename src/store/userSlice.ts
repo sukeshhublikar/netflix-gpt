@@ -3,10 +3,12 @@ import _ from "lodash";
 
 export interface userState {
   user: { displayName: string; email: string } | null;
+  language: string;
 }
 
 const initialState: userState = {
   user: null,
+  language: "en",
 };
 
 const userSlice = createSlice({
@@ -21,9 +23,12 @@ const userSlice = createSlice({
     removeUser: (state) => {
       state.user = null;
     },
+    setLanguage: (state, action) => {
+      state.language = action.payload;
+    },
   },
 });
 
-export const { addUser, removeUser } = userSlice.actions;
+export const { addUser, removeUser, setLanguage } = userSlice.actions;
 
 export default userSlice.reducer;
